@@ -129,29 +129,29 @@ export default {
       event.preventDefault();
       switch(this.plus) {
         case 1:
-          this.v1 = parseInt(this.display);
-          this.v2 = parseInt(this.secondValue);
+          this.v1 = parseFloat(this.display);
+          this.v2 = parseFloat(this.secondValue);
           this.display = this.v2 + this.v1;
           this.plus = 0;
           this.minus = 0;
           break;
         case 0:
-          this.v1 = parseInt(this.display);
-          this.v2 = parseInt(this.secondValue);
+          this.v1 = parseFloat(this.display);
+          this.v2 = parseFloat(this.secondValue);
           this.display = this.v2 - this.v1;
           this.plus = 0;
           this.minus = 0;
           break;
         case -1:
-          this.v1 = parseInt(this.display);
-          this.v2 = parseInt(this.secondValue);
+          this.v1 = parseFloat(this.display);
+          this.v2 = parseFloat(this.secondValue);
           this.display = this.v2 * this.v1;
           this.plus = 0;
           this.minus = 0;
           break;
         case - 2:
-          this.v1 = parseInt(this.display);
-          this.v2 = parseInt(this.secondValue);
+          this.v1 = parseFloat(this.display);
+          this.v2 = parseFloat(this.secondValue);
           this.display = this.v2 / this.v1;
           this.plus = 0;
           this.minus = 0;
