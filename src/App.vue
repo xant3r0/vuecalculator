@@ -202,7 +202,7 @@ h1 {
 }
 #calculator {
   border:2px solid teal;
-  padding-top:30px;
+  padding-top:100px;
   padding-bottom: 30px;
   padding-left: 30px;
   padding-right:30px;
