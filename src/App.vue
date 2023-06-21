@@ -206,6 +206,6 @@ h1 {
   padding-bottom: 30px;
   padding-left: 30px;
   padding-right:30px;
-  border-radius: 10%;
+  border-radius: 45px;
 }
 </style>
