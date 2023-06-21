@@ -17,5 +17,8 @@ button {
     color:teal;
     font-size:24pt;
     font-family: 'Montserrat', sans-serif;
+    margin-top:10px;
+    margin-right:5px;
+    margin-left:5px;
 }
 </style>

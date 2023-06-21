@@ -3,6 +3,10 @@
     <div id="calculator">
       <h1>{{ this.display }}</h1>
       <div class="btns">
+        <MyButton @click="deleteFromScreen">AC</MyButton>
+        <MyButton @click="plusMinus">+/-</MyButton>
+        <MyButton @click="addComma">,</MyButton>
+        <MyButton @click="divNumbers">/</MyButton>
         <MyButton @click="addOnDisplay7">7</MyButton>
         <MyButton @click="addOnDisplay8">8</MyButton>
         <MyButton @click="addOnDisplay9">9</MyButton>
@@ -15,10 +19,8 @@
         <MyButton @click="addOnDisplay2">2</MyButton>
         <MyButton @click="addOnDisplay3">3</MyButton>
         <MyButton @click="multNumbers">x</MyButton>
-        <MyButton @click="addOnDisplay0">0</MyButton>
+        <MyButton @click="addOnDisplay0" style="width: 320px;border-radius:45px;">0</MyButton>
         <MyButton @click="Equal">=</MyButton>
-        <MyButton @click="deleteFromScreen">AC</MyButton>
-        <MyButton @click="divNumbers">/</MyButton>
       </div>
     </div>
   </div>
@@ -32,7 +34,8 @@ export default {
     secondValue:"",
     v1:"",
     v2:"",
-    plus:0
+    plus:0,
+    minus:""
     }
   },
   methods: {
@@ -154,6 +157,15 @@ export default {
           this.minus = 0;
           break;
       }
+    },
+    plusMinus(event) {
+      event.preventDefault();
+      this.minus = parseInt(this.display) * -1;
+      this.display = this.minus;
+    },
+    addComma(event) {
+      event.preventDefault();
+      this.display = this.display + ".";
     }
   }
 }
@@ -181,7 +193,7 @@ export default {
   color:teal;
 }
 .btns {
-  max-width: 400px;
+  max-width: 440px;
 }
 h1 {
   color:teal;
