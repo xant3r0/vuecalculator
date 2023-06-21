@@ -16,5 +16,6 @@ button {
     background:none;
     color:teal;
     font-size:24pt;
+    font-family: 'Montserrat', sans-serif;
 }
 </style>

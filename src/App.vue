@@ -3,20 +3,22 @@
     <div id="calculator">
       <h1>{{ this.display }}</h1>
       <div class="btns">
-        <MyButton @click="addOnDisplay">1</MyButton>
-        <MyButton>2</MyButton>
-        <MyButton>3</MyButton>
+        <MyButton @click="addOnDisplay7">7</MyButton>
+        <MyButton @click="addOnDisplay8">8</MyButton>
+        <MyButton @click="addOnDisplay9">9</MyButton>
         <MyButton @click="addNumbers">+</MyButton>
-        <MyButton>4</MyButton>
-        <MyButton>5</MyButton>
-        <MyButton>6</MyButton>
-        <MyButton>-</MyButton>
-        <MyButton>7</MyButton>
-        <MyButton>8</MyButton>
-        <MyButton>9</MyButton>
+        <MyButton @click="addOnDisplay4">4</MyButton>
+        <MyButton @click="addOnDisplay5">5</MyButton>
+        <MyButton @click="addOnDisplay6">6</MyButton>
+        <MyButton @click="downNumbers">-</MyButton>
+        <MyButton @click="addOnDisplay1">1</MyButton>
+        <MyButton @click="addOnDisplay2">2</MyButton>
+        <MyButton @click="addOnDisplay3">3</MyButton>
+        <MyButton @click="multNumbers">x</MyButton>
+        <MyButton @click="addOnDisplay0">0</MyButton>
         <MyButton @click="Equal">=</MyButton>
-        <MyButton style="width: 300px;border-radius:20%">0</MyButton>
         <MyButton @click="deleteFromScreen">AC</MyButton>
+        <MyButton @click="divNumbers">/</MyButton>
       </div>
     </div>
   </div>
@@ -29,28 +31,129 @@ export default {
     display:'',
     secondValue:"",
     v1:"",
-    v2:""
+    v2:"",
+    plus:0
     }
   },
   methods: {
-    addOnDisplay(event) {
+    addOnDisplay1(event) {
       event.preventDefault();
       this.display = this.display + 1;
     },
+    addOnDisplay2(event) {
+      event.preventDefault();
+      this.display = this.display + 2;
+    },
+    addOnDisplay3(event) {
+      event.preventDefault();
+      this.display = this.display + 3;
+    },
+    addOnDisplay4(event) {
+      event.preventDefault();
+      this.display = this.display + 4;
+    },
+    addOnDisplay5(event) {
+      event.preventDefault();
+      this.display = this.display + 5;
+    },
+    addOnDisplay6(event) {
+      event.preventDefault();
+      this.display = this.display + 6;
+    },
+    addOnDisplay7(event) {
+      event.preventDefault();
+      this.display = this.display + 7;
+    },
+    addOnDisplay8(event) {
+      event.preventDefault();
+      this.display = this.display + 8;
+    },
+    addOnDisplay9(event) {
+      event.preventDefault();
+      this.display = this.display + 9;
+    },
+    addOnDisplay0(event) {
+      event.preventDefault();
+      this.display = this.display + 0;
+    },
+
+    //II cacat,das nub ,csf
     deleteFromScreen(event) {
       event.preventDefault();
       this.display = '';
     },
     addNumbers(event) {
       event.preventDefault();
-      this.secondValue = this.display;
+      this.plus++;
+      if(this.display === '') {
+        this.secondValue = 0;
+      } else {
+        this.secondValue = this.display;
+      }
+      this.display = '';
+    },
+    downNumbers(event) {
+      event.preventDefault();
+      this.minus++;
+      if(this.display === '') {
+        this.secondValue = 0;
+      } else {
+        this.secondValue = this.display;
+      }
+      this.display = '';
+    },
+    multNumbers(event) {
+      event.preventDefault();
+      this.plus = -1;
+      if(this.display === '') {
+        this.secondValue = 0;
+      } else {
+        this.secondValue = this.display;
+      }
+      this.display = '';
+    },
+    divNumbers(event) {
+      event.preventDefault();
+      this.plus = -2;
+      if(this.display === '') {
+        this.secondValue = 0;
+      } else {
+        this.secondValue = this.display;
+      }
       this.display = '';
     },
     Equal(event) {
       event.preventDefault();
-      this.v1 = parseInt(this.display);
-      this.v2 = parseInt(this.secondValue);
-      this.display = this.v1 + this.v2;
+      switch(this.plus) {
+        case 1:
+          this.v1 = parseInt(this.display);
+          this.v2 = parseInt(this.secondValue);
+          this.display = this.v2 + this.v1;
+          this.plus = 0;
+          this.minus = 0;
+          break;
+        case 0:
+          this.v1 = parseInt(this.display);
+          this.v2 = parseInt(this.secondValue);
+          this.display = this.v2 - this.v1;
+          this.plus = 0;
+          this.minus = 0;
+          break;
+        case -1:
+          this.v1 = parseInt(this.display);
+          this.v2 = parseInt(this.secondValue);
+          this.display = this.v2 * this.v1;
+          this.plus = 0;
+          this.minus = 0;
+          break;
+        case - 2:
+          this.v1 = parseInt(this.display);
+          this.v2 = parseInt(this.secondValue);
+          this.display = this.v2 / this.v1;
+          this.plus = 0;
+          this.minus = 0;
+          break;
+      }
     }
   }
 }
@@ -61,6 +164,7 @@ export default {
   margin:0;
   padding:0;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 .app {
   width:100%;
@@ -81,6 +185,15 @@ export default {
 }
 h1 {
   color:teal;
-  font-size:24pt;
+  font-size:72px;
+  text-align:end;
+}
+#calculator {
+  border:2px solid teal;
+  padding-top:30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right:30px;
+  border-radius: 10%;
 }
 </style>
