@@ -217,9 +217,19 @@ export default {
     },
     addComma(event) {
       event.preventDefault();
-      if(this.display[this.display.length - 1] !== '.') {
+
+      let isTrue = true;
+
+      for(let i = 0;i <= this.display.length - 1;i++) {
+        if(this.display[i] === '.') {
+          isTrue = false;
+          break;
+        } 
+      };
+
+      if(isTrue === true) {
         this.display = this.display + '.';
-      }
+      };
     }
   }
 }
