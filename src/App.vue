@@ -35,88 +35,99 @@ export default {
     v1:"",
     v2:"",
     plus:0,
-    minus:""
+    minus:"",
+    afterEqual: false
     }
   },
   methods: {
     addOnDisplay1(event) {
       event.preventDefault();
-      if(this.display !== "0") {
+      if(this.display !== "0" && this.afterEqual !== true) {
         this.display = this.display + 1;
       } else {
         this.display = "1";
+        this.afterEqual = false;
       }
     },
     addOnDisplay2(event) {
       event.preventDefault();
-      if(this.display !== "0") {
+      if(this.display !== "0" && this.afterEqual !== true) {
         this.display = this.display + 2;
       } else {
         this.display = "2";
+        this.afterEqual = false;
       }
     },
     addOnDisplay3(event) {
       event.preventDefault();
-      if(this.display !== "0") {
+      if(this.display !== "0" && this.afterEqual !== true) {
         this.display = this.display + 3;
       } else {
         this.display = "3";
+        this.afterEqual = false;
       }
     },
     addOnDisplay4(event) {
       event.preventDefault();
-      if(this.display !== "0") {
+      if(this.display !== "0" && this.afterEqual !== true) {
         this.display = this.display + 4;
       } else {
         this.display = "4";
+        this.afterEqual = false;
       }
     },
     addOnDisplay5(event) {
       event.preventDefault();
-      if(this.display !== "0") {
+      if(this.display !== "0" && this.afterEqual !== true) {
         this.display = this.display + 5;
       } else {
         this.display = "5";
+        this.afterEqual = false;
       }
     },
     addOnDisplay6(event) {
       event.preventDefault();
-      if(this.display !== "0") {
+      if(this.display !== "0" && this.afterEqual !== true) {
         this.display = this.display + 6;
       } else {
         this.display = "6";
+        this.afterEqual = false;
       }
     },
     addOnDisplay7(event) {
       event.preventDefault();
-      if(this.display !== "0") {
+      if(this.display !== "0" && this.afterEqual !== true) {
         this.display = this.display + 7;
       } else {
         this.display = "7";
+        this.afterEqual = false;
       }
     },
     addOnDisplay8(event) {
       event.preventDefault();
-      if(this.display !== "0") {
+      if(this.display !== "0" && this.afterEqual !== true) {
         this.display = this.display + 8;
       } else {
         this.display = "8";
+        this.afterEqual = false;
       }
     },
     addOnDisplay9(event) {
       event.preventDefault();
-      if(this.display !== "0") {
+      if(this.display !== "0" && this.afterEqual !== true) {
         this.display = this.display + 9
       } else {
         this.display = "9";
+        this.afterEqual = false;
       }
     },
     addOnDisplay0(event) {
       event.preventDefault();
-      if(this.display !== "0") {
+      if(this.display !== "0" && this.afterEqual !== true) {
         this.display = this.display + 0;
       } else {
         this.display = "0";
+        this.afterEqual = false;
       }
     },
 
@@ -124,6 +135,7 @@ export default {
     deleteFromScreen(event) {
       event.preventDefault();
       this.display = '0';
+      this.secondValue = '0';
     },
     addNumbers(event) {
       event.preventDefault();
@@ -174,6 +186,8 @@ export default {
           this.display = this.v2 + this.v1;
           this.plus = 0;
           this.minus = 0;
+          this.secondValue = '0';
+          this.afterEqual = true;
           break;
         case 0:
           this.v1 = parseFloat(this.display);
@@ -181,6 +195,8 @@ export default {
           this.display = this.v2 - this.v1;
           this.plus = 0;
           this.minus = 0;
+          this.secondValue = '0';
+          this.afterEqual = true;
           break;
         case -1:
           this.v1 = parseFloat(this.display);
@@ -188,6 +204,8 @@ export default {
           this.display = this.v2 * this.v1;
           this.plus = 0;
           this.minus = 0;
+          this.secondValue = '0';
+          this.afterEqual = true;
           break;
         case - 2:
           this.v1 = parseFloat(this.display);
@@ -195,6 +213,8 @@ export default {
           this.display = this.v2 / this.v1;
           this.plus = 0;
           this.minus = 0;
+          this.secondValue = '0';
+          this.afterEqual = true;
           break;
       }
     },
