@@ -174,9 +174,6 @@ export default {
           this.display = this.v2 + this.v1;
           this.plus = 0;
           this.minus = 0;
-          this.secondValue = '0';
-          this.v1 = '0';
-          this.v2 = '0';
           break;
         case 0:
           this.v1 = parseFloat(this.display);
@@ -184,9 +181,6 @@ export default {
           this.display = this.v2 - this.v1;
           this.plus = 0;
           this.minus = 0;
-          this.secondValue = '0';
-          this.v1 = '0';
-          this.v2 = '0';
           break;
         case -1:
           this.v1 = parseFloat(this.display);
@@ -194,9 +188,6 @@ export default {
           this.display = this.v2 * this.v1;
           this.plus = 0;
           this.minus = 0;
-          this.secondValue = '0';
-          this.v1 = '0';
-          this.v2 = '0';
           break;
         case - 2:
           this.v1 = parseFloat(this.display);
@@ -204,9 +195,6 @@ export default {
           this.display = this.v2 / this.v1;
           this.plus = 0;
           this.minus = 0;
-          this.secondValue = '0';
-          this.v1 = '0';
-          this.v2 = '0';
           break;
       }
     },
