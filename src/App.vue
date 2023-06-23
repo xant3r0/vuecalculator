@@ -18,7 +18,7 @@
         <MyButton @click="addOnDisplay1">1</MyButton>
         <MyButton @click="addOnDisplay2">2</MyButton>
         <MyButton @click="addOnDisplay3">3</MyButton>
-        <MyButton @click="multNumbers">X</MyButton>
+        <MyButton @click="multNumbers">x</MyButton>
         <MyButton @click="addOnDisplay0" style="width: 320px;border-radius:45px;">0</MyButton>
         <MyButton @click="Equal">=</MyButton>
       </div>
