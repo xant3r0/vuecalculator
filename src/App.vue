@@ -30,16 +30,45 @@
 export default {
   data() {
     return {
-    display:'0',
-    secondValue:"",
-    v1:"",
-    v2:"",
-    plus:0,
-    minus:"",
-    afterEqual: false
+      numArr:[],
+      operators:[],
+      display:"0",
+      afterEqual:false
     }
   },
   methods: {
+    deleteFromScreen(event) {
+      event.preventDefault();
+      this.display = "0";
+      this.numArr = [];
+      this.operators = [];
+    },
+    plusMinus(event) {
+      event.preventDefault();
+      this.display = parseFloat(this.display) * -1;
+    },
+    addComma(event) {
+      event.preventDefault();
+      
+      let isTrue = true;
+
+      for(let i = 0;i <= this.display.length - 1;i++) {
+        if(this.display[i] === '.') {
+          isTrue = false;
+          break;
+        } 
+      };
+
+      if(isTrue === true) {
+        this.display = this.display + '.';
+      };
+    },
+    divNumbers(event) {
+      event.preventDefault();
+      this.numArr.push(this.display);
+      this.operators.push("/");
+      this.display = "0";
+    },
     addOnDisplay1(event) {
       event.preventDefault();
       if(this.display !== "0" && this.afterEqual !== true) {
@@ -130,114 +159,47 @@ export default {
         this.afterEqual = false;
       }
     },
-
-    //II cacat,das nub ,csf
-    deleteFromScreen(event) {
-      event.preventDefault();
-      this.display = '0';
-      this.secondValue = '0';
-    },
     addNumbers(event) {
       event.preventDefault();
-      this.plus++;
-      if(this.display === '0') {
-        this.secondValue = 0;
-      } else {
-        this.secondValue = this.display;
-      }
-      this.display = '0';
+      this.numArr.push(this.display);
+      this.operators.push("+");
+      this.display = "0";
     },
     downNumbers(event) {
       event.preventDefault();
-      this.minus++;
-      if(this.display === '0') {
-        this.secondValue = 0;
-      } else {
-        this.secondValue = this.display;
-      }
-      this.display = '0';
+      this.numArr.push(this.display);
+      this.operators.push("-");
+      this.display = "0";
     },
     multNumbers(event) {
       event.preventDefault();
-      this.plus = -1;
-      if(this.display === '0') {
-        this.secondValue = 0;
-      } else {
-        this.secondValue = this.display;
-      }
-      this.display = '0';
-    },
-    divNumbers(event) {
-      event.preventDefault();
-      this.plus = -2;
-      if(this.display === '0') {
-        this.secondValue = 0;
-      } else {
-        this.secondValue = this.display;
-      }
-      this.display = '0';
+      this.numArr.push(this.display);
+      this.operators.push("*");
+      this.display = "0";
     },
     Equal(event) {
       event.preventDefault();
-      switch(this.plus) {
-        case 1:
-          this.v1 = parseFloat(this.display);
-          this.v2 = parseFloat(this.secondValue);
-          this.display = this.v2 + this.v1;
-          this.plus = 0;
-          this.minus = 0;
-          this.secondValue = '0';
-          this.afterEqual = true;
-          break;
-        case 0:
-          this.v1 = parseFloat(this.display);
-          this.v2 = parseFloat(this.secondValue);
-          this.display = this.v2 - this.v1;
-          this.plus = 0;
-          this.minus = 0;
-          this.secondValue = '0';
-          this.afterEqual = true;
-          break;
-        case -1:
-          this.v1 = parseFloat(this.display);
-          this.v2 = parseFloat(this.secondValue);
-          this.display = this.v2 * this.v1;
-          this.plus = 0;
-          this.minus = 0;
-          this.secondValue = '0';
-          this.afterEqual = true;
-          break;
-        case - 2:
-          this.v1 = parseFloat(this.display);
-          this.v2 = parseFloat(this.secondValue);
-          this.display = this.v2 / this.v1;
-          this.plus = 0;
-          this.minus = 0;
-          this.secondValue = '0';
-          this.afterEqual = true;
-          break;
-      }
-    },
-    plusMinus(event) {
-      event.preventDefault();
-      this.minus = parseInt(this.display) * -1;
-      this.display = this.minus;
-    },
-    addComma(event) {
-      event.preventDefault();
+      let result = parseInt(this.numArr[0]);
+      this.numArr.push(this.display);
 
-      let isTrue = true;
-
-      for(let i = 0;i <= this.display.length - 1;i++) {
-        if(this.display[i] === '.') {
-          isTrue = false;
-          break;
-        } 
+      for(let i = 0;i <= this.operators.length - 1;i++) {
+        switch(this.operators[i]) {
+          case '+':
+            result = result + parseInt(this.numArr[i + 1]);
+            break;
+          case '-':
+            result = result - parseFloat(this.numArr[i + 1]);
+            break;
+          case '*':
+            result = result * parseFloat(this.numArr[i + 1]);
+            break;
+          case '/':
+            result = result / parseFloat(this.numArr[i + 1]);
+            break;
+        };
       };
-
-      if(isTrue === true) {
-        this.display = this.display + '.';
-      };
+      this.display = result;
+      this.afterEqual = true;
     }
   }
 }
