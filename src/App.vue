@@ -182,29 +182,35 @@ export default {
       let result = parseInt(this.numArr[0]);
       this.numArr.push(this.display);
 
-      for(let i = 0;i <= this.operators.length - 1;i++) {
-        switch(this.operators[i]) {
-          case '+':
-            result = result + parseInt(this.numArr[i + 1]);
-            break;
-          case '-':
-            result = result - parseFloat(this.numArr[i + 1]);
-            break;
-          case '*':
-            result = result * parseFloat(this.numArr[i + 1]);
-            break;
-          case '/':
-            result = result / parseFloat(this.numArr[i + 1]);
-            break;
+      
+      
+        for(let i = 0;i <= this.operators.length - 1;i++) {
+          switch(this.operators[i]) {
+            case '+':
+              result = result + parseInt(this.numArr[i + 1]);
+              break;
+            case '-':
+              result = result - parseFloat(this.numArr[i + 1]);
+              break;
+            case '*':
+              result = result * parseFloat(this.numArr[i + 1]);
+              break;
+            case '/':
+              result = result / parseFloat(this.numArr[i + 1]);
+              break;
+          };
         };
-      };
-      this.display = result;
-      this.afterEqual = true;
-      this.numArr = [];
-      this.operators = [];
+        if(result == NaN) {
+          this.display = 0;
+        }else{
+          this.display = result;
+        }
+        this.afterEqual = true;
+        this.numArr = [];
+        this.operators = [];
+      }
     }
   }
-}
 </script>
 
 <style>
