@@ -200,6 +200,8 @@ export default {
       };
       this.display = result;
       this.afterEqual = true;
+      this.numArr = [];
+      this.operators = [];
     }
   }
 }
