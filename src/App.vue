@@ -181,6 +181,7 @@ export default {
       event.preventDefault();
       let result = parseInt(this.numArr[0]);
       this.numArr.push(this.display);
+      let test = false;
 
       
       
@@ -200,7 +201,11 @@ export default {
               break;
           };
         };
-        if(result == NaN) {
+
+        
+        if(isNaN(result) === true) {
+          test = true;
+          console.log(result);
           this.display = 0;
         }else{
           this.display = result;
